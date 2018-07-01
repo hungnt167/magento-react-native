@@ -4,12 +4,14 @@ import { connect } from 'react-redux';
 import { Spinner } from './common';
 import { initMagento, getCategoryTree } from '../actions';
 import CategoryTreeList from './CategoryTreeList';
+import HeaderMenuButton from './HeaderMenuButton';
 
 class CategoryTree extends Component {
-	static navigationOptions = {
-		title: 'Categories'.toUpperCase(),
-		headerBackTitle: ' '
-	};
+  static navigationOptions = {
+    title: 'Categories'.toUpperCase(),
+    headerLeft: <HeaderMenuButton />
+    // headerBackTitle: ' '
+  };
 
   componentWillMount() {
     if (!this.props.magento) {
@@ -33,11 +35,7 @@ class CategoryTree extends Component {
   }
 
   render() {
-    return (
-      <View style={styles.containerStyle}>
-        {this.renderContent()}
-      </View>
-    );
+    return <View style={styles.containerStyle}>{this.renderContent()}</View>;
   }
 }
 
@@ -52,4 +50,6 @@ const mapStateToProps = ({ magento, categoryTree }) => {
   return { magento, categoryTree };
 };
 
-export default connect(mapStateToProps, { initMagento, getCategoryTree })(CategoryTree);
+export default connect(mapStateToProps, { initMagento, getCategoryTree })(
+  CategoryTree
+);

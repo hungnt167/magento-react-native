@@ -1,4 +1,4 @@
-import { createStackNavigator } from 'react-navigation';
+import { createStackNavigator, createDrawerNavigator } from 'react-navigation';
 
 import ProductList from '../components/catalog/ProductList';
 import CategoryTree from '../components/CategoryTree';
@@ -7,14 +7,16 @@ import Cart from '../components/cart/Cart';
 import Checkout from '../components/checkout/Checkout';
 
 import {
+  NAVIGATION_CATEGORY_TREE_DRAWER,
   NAVIGATION_CATEGORY_TREE_PATH,
   NAVIGATION_CATEGORY_PATH,
   NAVIGATION_CHECKOUT_PATH,
   NAVIGATION_PRODUCT_PATH,
-  NAVIGATION_CART_PATH
+  NAVIGATION_CART_PATH,
+  NAVIGATION_DRAWER
 } from './routes';
 
-export const Navigator = createStackNavigator(
+export const AppStack = createStackNavigator(
   {
     [NAVIGATION_CATEGORY_TREE_PATH]: CategoryTree,
     [NAVIGATION_CATEGORY_PATH]: ProductList,
@@ -37,3 +39,8 @@ export const Navigator = createStackNavigator(
     }
   }
 );
+
+export const Navigator = createDrawerNavigator({
+  [NAVIGATION_CATEGORY_TREE_DRAWER]: AppStack,
+  [NAVIGATION_DRAWER]: CategoryTree
+});
