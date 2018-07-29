@@ -1,4 +1,5 @@
 import { magento } from '../magento';
+import { Magento2Client } from 'magento2-rest-client';
 import { magentoOptions } from '../config/magento';
 import {
 	MAGENTO_INIT,
