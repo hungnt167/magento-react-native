@@ -9,4 +9,4 @@ export const magentoOptions = {
       }
     }
 };
-" > ../src/config/magento.js
+" > ./src/config/magento.js
